@@ -1,5 +1,7 @@
 # Bokeh Studio on Vercel
 
+**Production:** [https://bokeh-studio.vercel.app/](https://bokeh-studio.vercel.app/)
+
 This alternative deployment keeps the assignment's Python/OpenCV blur engine and replaces Streamlit's persistent UI with a static HTML/CSS/JavaScript interface and a stateless Python function. The original Streamlit app remains in the repository root.
 
 ## Deploy
@@ -30,3 +32,9 @@ Open `http://127.0.0.1:8503`. For Vercel-specific emulation, use `vercel dev` wh
 On October 30, 2026, six tests passed under Python 3.12 using the pinned NumPy/OpenCV/Pillow packages: sample rendering and PNG encoding; invalid settings/base64; constant and 16-bit depth; original-engine equality; POST handler success/error; and request size/MIME limits. Run `python -m unittest discover -s tests -v` from this directory.
 
 `node --check public/app.js` passed. A separate DOM test exercised sample preparation, request submission, result/download state, control-change invalidation and reset. This is not a browser layout test. The local server started successfully, but socket-based HTTP testing was restricted by the workspace; the POST protocol was tested directly with in-memory request/response streams. Production verification is recorded separately after an actual Vercel deployment.
+
+### Production verification — October 30, 2026
+
+Vercel deployment `dpl_Bd2S5NBm4SazdfYGbkMXgQe81wrr` reached READY. The static interface and `/api/process` health check returned HTTP 200. A real POST of the bundled sample pair to the public production endpoint returned a valid **900×585 RGB PNG**, verified with Pillow. Engine time was **0.94 s** and total request time approximately **3.49 s** in that test; timings vary and cold starts can take longer.
+
+Deployment was made directly through the Vercel integration using the tested source files because the account's GitHub-to-Vercel integration was not installed. The complete source is published in GitHub, but automatic deployments on Git pushes are not connected yet. To enable them later, install Vercel's GitHub integration and link this repository with root directory `vercel`.

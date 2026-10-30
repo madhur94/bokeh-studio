@@ -4,6 +4,8 @@
 
 **Assignment 10 · October 29, 2026 · Bokeh Effect Tool**
 
+**Live Vercel app:** [bokeh-studio.vercel.app](https://bokeh-studio.vercel.app/)
+
 [![Deploy on Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/deploy?repository=madhur94/bokeh-studio&branch=main&mainModule=app.py)
 
 Source: [madhur94/bokeh-studio](https://github.com/madhur94/bokeh-studio). The deployment button opens Streamlit Community Cloud with this repository, `main` branch and `app.py` entrypoint selected.
