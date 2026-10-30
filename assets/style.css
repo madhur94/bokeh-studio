@@ -1,0 +1,53 @@
+/* Bokeh Studio: native Streamlit widgets, with a small, responsive visual layer. */
+:root { color-scheme: dark; }
+.stApp { background: radial-gradient(ellipse at 85% 0%, #222e2033, transparent 45%), #111512; }
+.stMainBlockContainer { max-width: 1440px; padding-top: 4.5rem; padding-bottom: 2rem; }
+[data-testid="stSidebar"] { border-right: 1px solid #30382c; }
+[data-testid="stSidebar"] .stHeading h3 { font-size: .9rem; letter-spacing: .02em; }
+h1, h2, h3 { font-weight: 550 !important; }
+h1 { letter-spacing: -.065em; }
+.eyebrow { color: #b4c1ae; font-size: .69rem; font-weight: 650; letter-spacing: .18em; text-transform: uppercase; }
+.brand { display:flex; align-items:center; gap: .7rem; font-size:1.25rem; letter-spacing:-.04em; font-weight:650; }
+.brand-icon { width: 34px; height:34px; display:grid; place-items:center; border:1px solid #718b5c; border-radius:50%; color:#c8f29a; font-size:24px; }
+.brand-sub { color:#8b9986; font-size:.72rem; margin: .35rem 0 1.6rem 2.8rem; }
+.topline { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding-bottom:1.2rem; border-bottom:1px solid #30382c; }
+.badge { color:#c8f29a; font-size:.7rem; border:1px solid #46553b; border-radius:40px; padding:.35rem .7rem; white-space:nowrap; }
+.hero { padding:2.4rem 0 1.6rem; }
+.hero h1 { font-size:clamp(2.4rem, 4.5vw, 4.4rem); line-height:1.04; margin:.7rem 0 1rem; max-width:800px; }
+.hero h1 span { color:#c8f29a; }
+.hero p { color:#a8b3a2; max-width:620px; font-size:.95rem; line-height:1.7; }
+.hero-loaded { padding:1.2rem 0 .5rem; }
+.hero-loaded h1 { font-size:2.6rem; }
+.hero-loaded br { display:none; }
+.workflow { display:flex; gap:.7rem; flex-wrap:wrap; margin:0 0 1.5rem; }
+.step { flex:1; min-width:130px; border-top:1px solid #3a4433; padding:.8rem 0; color:#a5b19e; font-size:.76rem; }
+.step b { color:#c8f29a; margin-right:.5rem; font-size:.65rem; }
+.empty { padding:3.8rem 1.5rem; border:1px dashed #46503f; border-radius:14px; text-align:center; background:linear-gradient(130deg,#20271e,#141a15); }
+.empty .aperture { font-size:3.2rem; color:#c8f29a; line-height:1; margin-bottom:1.3rem; }
+.empty h2 { font-size:1.45rem; letter-spacing:-.03em; }
+.empty p { color:#a6b39f; font-size:.86rem; max-width:440px; margin:.6rem auto; line-height:1.7; }
+.empty small { display:block; margin-top:1.5rem; color:#7e8d77; font-size:.7rem; letter-spacing:.06em; }
+.section-title { display:flex; justify-content:space-between; align-items:center; gap:1rem; margin: .8rem 0 1.2rem; }
+.section-title h2 { font-size:1.2rem; letter-spacing:-.04em; margin:0; }
+.section-title span { font-size:.7rem; color:#a7b29f; }
+.info-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:.5rem; margin:.7rem 0 1.3rem; }
+.info-grid div { padding:.8rem; border:1px solid #343e2e; border-radius:8px; }
+.info-grid small { display:block; color:#9eac96; font-size:.65rem; margin-bottom:.4rem; }
+.info-grid strong { font-size:.79rem; font-weight:550; }
+.footer { color:#819078; font-size:.68rem; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; border-top:1px solid #30382c; padding-top:1.2rem; margin-top:2rem; }
+[data-testid="stImage"] img { border-radius:10px; }
+[data-testid="stFileUploader"] { border:1px solid #35412f; border-radius:10px; padding:.5rem; }
+[data-testid="stFileUploader"] section { padding:.6rem; }
+[data-testid="stFileUploader"] small { font-size:.65rem; }
+.stButton > button, .stDownloadButton > button { border-radius:8px; min-height:2.6rem; font-weight:600; }
+[data-testid="stBaseButton-primary"] { color:#111512 !important; }
+[data-baseweb="tab-list"] { gap:1.5rem; border-bottom:1px solid #30382c; }
+[data-baseweb="tab"] { padding:.6rem 0; }
+@media (max-width:700px) {
+  .stMainBlockContainer { padding:4rem 1rem 1.2rem; }
+  .hero { padding:1.6rem 0 1rem; }
+  .info-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .topline { flex-wrap:wrap; }
+  .step { min-width:100px; }
+  .empty { padding:2rem 1rem; }
+}
