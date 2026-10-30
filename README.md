@@ -8,6 +8,10 @@
 
 Source: [madhur94/bokeh-studio](https://github.com/madhur94/bokeh-studio). The deployment button opens Streamlit Community Cloud with this repository, `main` branch and `app.py` entrypoint selected.
 
+### Vercel alternative
+
+The [`vercel/`](vercel/README.md) directory contains a separate Vercel-compatible build: a static interface with a stateless Python/OpenCV function. Import this repository with **Root Directory = `vercel`** and Framework Preset **Other**. It uses the same Bokeh algorithm, with 900 px output and browser-optimized uploads to respect Vercel's request size limit. The Streamlit assignment remains available at the repository root.
+
 ## Overview and demo features
 
 - Dual JPG/PNG uploads; grayscale, RGB-luminance and 16-bit PNG depth.

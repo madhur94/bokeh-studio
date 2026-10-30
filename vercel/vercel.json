@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "outputDirectory": "public",
+  "functions": {
+    "api/process.py": {
+      "maxDuration": 60,
+      "excludeFiles": "{tests/**,__pycache__/**,public/**,README.md,dev_server.py}"
+    }
+  },
+  "headers": [
+    {"source": "/(.*)", "headers": [
+      {"key": "X-Content-Type-Options", "value": "nosniff"},
+      {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"}
+    ]}
+  ]
+}

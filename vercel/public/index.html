@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Create depth-aware Bokeh from an RGB photograph and its depth map.">
+  <title>Bokeh Studio</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <aside aria-label="Control panel">
+    <a class="brand" href="/">◉ <span>Bokeh Studio</span></a><p class="tagline">A little depth. A different perspective.</p>
+    <form id="controls">
+      <h2>01 / Input images</h2>
+      <label class="upload">RGB / original image<input id="rgb" type="file" accept="image/jpeg,image/png" required><small id="rgb-info">JPG or PNG · up to 20 MB</small></label>
+      <label class="upload">Corresponding depth map<input id="depth" type="file" accept="image/jpeg,image/png" required><small id="depth-info">Grayscale or RGB depth</small></label>
+      <button id="sample" type="button" class="secondary">Try the sample scene</button>
+      <h2>02 / Depth & focus</h2>
+      <label>Depth interpretation<select id="direction"><option value="bright">Bright = Near</option><option value="dark">Dark = Near</option></select></label>
+      <label>Focus depth <output for="focus" id="focus-value">0.22</output><input id="focus" type="range" min="0" max="1" step="0.01" value="0.22"><small>0 = nearest · 1 = farthest</small></label>
+      <label>Focus range <output for="range" id="range-value">0.18</output><input id="range" type="range" min="0.02" max="0.8" step="0.01" value="0.18"></label>
+      <label class="check"><input id="smooth" type="checkbox" checked> Smooth depth boundaries</label>
+      <h2>03 / Bokeh</h2>
+      <label>Bokeh style<select id="preset"><option>Natural</option><option>Portrait</option><option>Strong</option><option>Custom</option></select></label>
+      <label>Blur strength <output for="blur" id="blur-value">24</output><input id="blur" type="range" min="0" max="40" step="1" value="24"></label>
+      <label>Edge feathering <output for="feather" id="feather-value">3</output><input id="feather" type="range" min="0" max="12" step="1" value="3"></label>
+      <label>Blur quality<select id="levels"><option value="4">Fast · 4 levels</option><option value="6" selected>Balanced · 6 levels</option><option value="9">Fine · 9 levels</option></select></label>
+      <button id="generate" class="primary" type="submit">Generate Bokeh</button>
+      <button class="secondary" id="reset" type="button">Reset workspace</button>
+      <p class="small">CPU powered · No API keys<br>Images optimized to 900 px for web processing.<br>Uploads are processed without permanent storage.</p>
+    </form>
+  </aside>
+  <main>
+    <div class="topline"><span>BOKEH STUDIO / DEPTH-AWARE PHOTOGRAPHY</span><span class="badge">Assignment 10 · 29 Oct 2026</span></div>
+    <header><p class="eyebrow">COMPUTATIONAL PHOTOGRAPHY, MADE SIMPLE</p><h1>Bring your subject<br>into <em>focus.</em></h1><p>Turn an image and its depth map into a softer, more cinematic frame.<br>You choose the focus. We take care of the falloff.</p></header>
+    <ol class="workflow"><li><b>01</b> Upload a pair</li><li><b>02</b> Find your focus</li><li><b>03</b> Shape the blur</li><li><b>04</b> Compare & export</li></ol>
+    <div id="status" role="status" aria-live="polite" hidden></div>
+    <section id="empty"><div class="aperture" aria-hidden="true">◎</div><p class="eyebrow">YOUR NEXT FRAME STARTS HERE</p><h2>Two images. One new perspective.</h2><p>Upload an RGB image and its corresponding depth map<br>in the control panel, or explore with the sample scene.</p><button id="empty-sample" class="secondary">Explore with a sample →</button></section>
+    <section id="workspace" hidden>
+      <nav role="tablist" aria-label="Image views"><button role="tab" aria-selected="true" aria-controls="result-panel" id="result-tab">Result</button><button role="tab" aria-selected="false" aria-controls="depth-panel" id="depth-tab">Depth analysis</button><button role="tab" aria-selected="false" aria-controls="compare-panel" id="compare-tab">Comparison</button></nav>
+      <div id="result-panel" role="tabpanel" aria-labelledby="result-tab"><div class="section-head"><h2>Your frame, reimagined.</h2><small id="render-state">READY TO CREATE</small></div><img id="result-image" alt="Original image preview"><a class="primary download" id="download" download="bokeh_result.png" hidden>Download Bokeh Image ↓</a><div class="info" id="image-info"></div></div>
+      <div id="depth-panel" role="tabpanel" aria-labelledby="depth-tab" hidden><p id="analysis-hint">Generate Bokeh to inspect the depth processing and focus mask.</p><div class="analysis-grid" id="analysis" hidden><figure><img id="input-depth" alt="Input depth map"><figcaption>Input depth / original encoding</figcaption></figure><figure><img id="normalized-depth" alt="Normalized depth map"><figcaption>Normalized input / 0–1 intensity</figcaption></figure><figure><img id="interpreted-depth" alt="Interpreted near-to-far depth"><figcaption>Interpreted depth / dark = near</figcaption></figure><figure><img id="focus-mask" alt="Soft focus mask"><figcaption>Focus mask / white = sharp</figcaption></figure></div></div>
+      <div id="compare-panel" role="tabpanel" aria-labelledby="compare-tab" hidden><p id="compare-hint">Generate Bokeh to compare the original and result.</p><div class="analysis-grid" id="comparison" hidden><figure><img id="before" alt="Original photograph"><figcaption>ORIGINAL</figcaption></figure><figure><img id="after" alt="Bokeh result"><figcaption>BOKEH</figcaption></figure></div></div>
+    </section>
+    <footer><span>BOKEH STUDIO / A STUDY IN DEPTH & FOCUS</span><a href="https://github.com/madhur94/bokeh-studio">View source ↗</a></footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
